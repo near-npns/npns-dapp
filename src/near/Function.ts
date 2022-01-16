@@ -72,3 +72,14 @@ export const npnsSubscribe = (
     amount: ONE_YOCTO_NEAR
   })
 }
+
+export const npnsUnSubscribe = (
+  channel_id: number
+): Promise<FinalExecutionOutcome> => {
+  return FunctionCall({
+    methodName: 'unsubscribe',
+    args: { channel_id: channel_id },
+    gas: MIN_GAS,
+    amount: ONE_YOCTO_NEAR
+  })
+}

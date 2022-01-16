@@ -1,7 +1,12 @@
 import { HeaderPage } from '@/layout/header'
 import { NavPage } from '@/layout/navbar'
 import { wallet } from '@/near/Account'
-import { npnsGetChannels, npnsSubscribe, npnsSubscribes } from '@/near/Function'
+import {
+  npnsGetChannels,
+  npnsSubscribe,
+  npnsSubscribes,
+  npnsUnSubscribe
+} from '@/near/Function'
 import { FromIndex } from '@/state'
 import { NPNSChannelProps } from '@/types'
 import {
@@ -38,6 +43,10 @@ function ChannelList() {
 
   const subscribe = useMutation((channel_id: number) =>
     npnsSubscribe(channel_id)
+  )
+
+  const unsubscribe = useMutation((channel_id: number) =>
+    npnsUnSubscribe(channel_id)
   )
 
   if (isLoading) {
@@ -78,6 +87,8 @@ function ChannelList() {
                 onChange={(event) => {
                   if (event.currentTarget.checked) {
                     subscribe.mutate(channel.id)
+                  } else {
+                    unsubscribe.mutate(channel.id)
                   }
                 }}
               />
