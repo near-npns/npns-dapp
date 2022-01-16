@@ -1,4 +1,4 @@
-import { NPNSChannelProps, NPNSMetadata } from '@/types'
+import { NPNSChannelInputProps, NPNSChannelProps, NPNSMetadata } from '@/types'
 import { FinalExecutionOutcome } from 'near-api-js/lib/providers'
 import { MIN_GAS, NPNS_CONTRACT_ID, wallet } from './Account'
 import { getAmount, getGas } from './helper'
@@ -41,14 +41,12 @@ export const npnsGetChannels = (
   })
 }
 
-export const npnsAddChanel = (
-  name: string,
-  icon: string,
-  description: string
+export const npnsAddChannel = (
+  props: NPNSChannelInputProps
 ): Promise<FinalExecutionOutcome> => {
   return FunctionCall({
     methodName: 'add_channel',
-    args: { channel: { name: name, icon: icon, description: description } },
+    args: { channel: props },
     gas: MIN_GAS,
     amount: ONE_NEAR
   })

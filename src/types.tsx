@@ -15,3 +15,9 @@ export interface NPNSChannel {
   created_at: BigInt
   updated_at: BigInt
 }
+
+export interface NPNSChannelInputProps {
+  name: string
+  icon: string
+  description: string
+}
