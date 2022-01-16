@@ -51,3 +51,24 @@ export const npnsAddChannel = (
     amount: ONE_NEAR
   })
 }
+
+export const npnsSubscribes = (
+  member: string,
+  channel_ids: number[]
+): Promise<Record<number, boolean>> => {
+  return ViewFunction({
+    methodName: 'subscribes',
+    args: { member: member, channel_ids: channel_ids }
+  })
+}
+
+export const npnsSubscribe = (
+  channel_id: number
+): Promise<FinalExecutionOutcome> => {
+  return FunctionCall({
+    methodName: 'subscribe',
+    args: { channel_id: channel_id },
+    gas: MIN_GAS,
+    amount: ONE_YOCTO_NEAR
+  })
+}

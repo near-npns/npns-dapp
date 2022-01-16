@@ -7,6 +7,11 @@ export interface NPNSChannelProps {
   id: number
   channel: NPNSChannel
 }
+
+export interface NPNSSubscribes {
+  id: number
+  isSubscribed: boolean
+}
 export interface NPNSChannel {
   name: string
   icon: string

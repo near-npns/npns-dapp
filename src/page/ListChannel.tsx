@@ -1,15 +1,25 @@
 import { HeaderPage } from '@/layout/header'
 import { NavPage } from '@/layout/navbar'
-import { npnsGetChannels } from '@/near/Function'
+import { wallet } from '@/near/Account'
+import { npnsGetChannels, npnsSubscribe, npnsSubscribes } from '@/near/Function'
 import { FromIndex } from '@/state'
 import { NPNSChannelProps } from '@/types'
-import { AppShell, Card, List, Skeleton, Text } from '@mantine/core'
-import { useQuery } from 'react-query'
+import {
+  AppShell,
+  Card,
+  Group,
+  List,
+  Skeleton,
+  Switch,
+  Text,
+  useMantineTheme
+} from '@mantine/core'
+import { useMutation, useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
 
 function ChannelList() {
   const [fromIndex, setFromIndex] = useRecoilState(FromIndex)
-
+  const theme = useMantineTheme()
   const {
     isLoading,
     isError,
@@ -18,6 +28,17 @@ function ChannelList() {
   } = useQuery(['channels', fromIndex], () => {
     return npnsGetChannels(fromIndex, 10)
   })
+
+  const { data: subscribes } = useQuery(['subscribes', channels], () => {
+    return npnsSubscribes(
+      wallet.getAccountId(),
+      channels?.map((channel) => channel.id) || []
+    )
+  })
+
+  const subscribe = useMutation((channel_id: number) =>
+    npnsSubscribe(channel_id)
+  )
 
   if (isLoading) {
     return <Skeleton height={50} circle mb="xl" />
@@ -38,11 +59,30 @@ function ChannelList() {
       }
     })
     .map((channel, index) => {
-      console.log(channel)
+      let isSubscribed = false
+      if (subscribes) {
+        isSubscribed = subscribes[channel.id]
+        console.log(isSubscribed)
+      }
       return (
         <List.Item key={index}>
           <Card shadow="sm" padding="lg">
-            <Card.Section>{channel.channel.name}</Card.Section>
+            <Group
+              position="apart"
+              style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+            >
+              <Text weight={500}>{channel.channel.name}</Text>
+              <Switch
+                label="订阅"
+                checked={isSubscribed}
+                onChange={(event) => {
+                  if (event.currentTarget.checked) {
+                    subscribe.mutate(channel.id)
+                  }
+                }}
+              />
+            </Group>
+
             <Text>{channel.channel.description}</Text>
           </Card>
         </List.Item>
