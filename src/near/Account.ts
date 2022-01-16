@@ -19,23 +19,7 @@ export const near = new Near(config)
 
 export const wallet = new WalletConnection(near, null)
 
-export const NPNS_CONTRACT_ID = 'cryptdao3.kula.testnet'
-
-export const Constract = new nearAPI.Contract(
-  wallet.account(),
-  NPNS_CONTRACT_ID,
-  {
-    // This configures the contract to use the view functions instead of the mutable functions
-    viewMethods: ['get_citizen', 'get_proposals', 'metadata'],
-    changeMethods: [
-      'add_citizen',
-      'add_proposal',
-      'vote_proposal',
-      'vote_citizen',
-      'set_metadata'
-    ]
-  }
-)
+export const NPNS_CONTRACT_ID = 'npns-test-1.kula.testnet'
 
 export interface AccountStorageView {
   total: string

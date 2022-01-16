@@ -1,28 +1,15 @@
-import { HeaderPage } from '@/layout/header'
-import { AppShell, Navbar } from '@mantine/core'
+import CreateChannelPage from '@/page/CreateChannel'
+import IndexPage from '@/page/Index'
+import ListChannelPage from '@/page/ListChannel'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <AppShell
-      padding="md"
-      navbar={
-        <Navbar width={{ base: 300 }} height={500} padding="xs">
-          {/* Navbar content */}
-        </Navbar>
-      }
-      header={<HeaderPage />}
-      styles={(theme) => ({
-        main: {
-          backgroundColor:
-            theme.colorScheme === 'dark'
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0]
-        }
-      })}
-    >
-      {/* Your application here */}
-      111
-    </AppShell>
+    <Routes>
+      <Route path="/" element={<IndexPage />} />
+      <Route path="/createchannel" element={<CreateChannelPage />} />
+      <Route path="/listchannel" element={<ListChannelPage />} />
+    </Routes>
   )
 }
 

@@ -1,14 +1,14 @@
 export interface NearViewFunctionOptions {
-  methodName: string;
-  args: object;
+  methodName: string
+  args: object
 }
 
 export interface NearFunctionCallOptions extends NearViewFunctionOptions {
-  gas: string;
-  amount: string;
+  gas: string
+  amount: string
 }
 
 export interface Transaction {
-  receiverId: string;
-  functionCalls: NearFunctionCallOptions[];
+  receiverId: string
+  functionCalls: NearFunctionCallOptions[]
 }

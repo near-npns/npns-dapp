@@ -1,36 +1,25 @@
-import {
-  Citizen,
-  DaoMetadata,
-  PAGE_SIZE,
-  ProposalInputProps,
-  ProposalProps
-} from '@/types'
-import { List } from 'immutable'
+import { NPNSChannelProps, NPNSMetadata } from '@/types'
 import { FinalExecutionOutcome } from 'near-api-js/lib/providers'
-import { DAO_CONTRACT_ID, MIN_GAS, wallet } from './Account'
+import { MIN_GAS, NPNS_CONTRACT_ID, wallet } from './Account'
 import { getAmount, getGas } from './helper'
 import { NearFunctionCallOptions, NearViewFunctionOptions } from './near'
 export const ONE_YOCTO_NEAR = '0.000000000000000000000001'
 export const ONE_NEAR = '1'
 export const ONE_MORE_DEPOSIT_AMOUNT = '0.01'
 
-export const DaoViewFunction = ({
-  methodName,
-  args
-}: NearViewFunctionOptions) => {
+export const ViewFunction = ({ methodName, args }: NearViewFunctionOptions) => {
   //console.log(`call ${methodName} with args: ${JSON.stringify(args)}`);
-  return wallet.account().viewFunction(DAO_CONTRACT_ID, methodName, args)
+  return wallet.account().viewFunction(NPNS_CONTRACT_ID, methodName, args)
 }
 
-export const DaoFunctionCall = ({
+export const FunctionCall = ({
   methodName,
   args,
   gas,
   amount
 }: NearFunctionCallOptions) => {
-  const val = getAmount(amount)
   return wallet.account().functionCall({
-    contractId: DAO_CONTRACT_ID,
+    contractId: NPNS_CONTRACT_ID,
     methodName: methodName,
     args: args,
     gas: getGas(gas),
@@ -38,46 +27,28 @@ export const DaoFunctionCall = ({
   })
 }
 
-export const ViewFunction = (
-  tokenId: string,
-  { methodName, args }: NearViewFunctionOptions
-) => {
-  return wallet.account().viewFunction(tokenId, methodName, args)
+export const daoGetMetaData = (): Promise<NPNSMetadata> => {
+  return ViewFunction({ methodName: 'metadata', args: {} })
 }
 
-export const daoGetMetaData = (): Promise<DaoMetadata> => {
-  return DaoViewFunction({ methodName: 'metadata', args: {} })
-}
-
-export const daoGetCitizen = (account_id: string): Promise<Citizen> => {
-  return DaoViewFunction({
-    methodName: 'get_citizen',
-    args: { account_id: account_id }
+export const npnsGetChannels = (
+  from: number,
+  limit: number
+): Promise<NPNSChannelProps[]> => {
+  return ViewFunction({
+    methodName: 'channels',
+    args: { from: from, limit: limit }
   })
 }
 
-export const daoGetProposals = (
-  from_index: number
-): Promise<List<ProposalProps>> => {
-  return DaoViewFunction({
-    methodName: 'get_proposals',
-    args: { from_index: from_index, limit: PAGE_SIZE }
-  })
-}
-
-export const daoGetProposal = (id: number): Promise<ProposalProps> => {
-  return DaoViewFunction({
-    methodName: 'get_proposal',
-    args: { id: id }
-  })
-}
-
-export const daoAddProposal = async (
-  props: ProposalInputProps
+export const npnsAddChanel = (
+  name: string,
+  icon: string,
+  description: string
 ): Promise<FinalExecutionOutcome> => {
-  return DaoFunctionCall({
-    methodName: 'add_proposal',
-    args: { proposal: props },
+  return FunctionCall({
+    methodName: 'add_channel',
+    args: { channel: { name: name, icon: icon, description: description } },
     gas: MIN_GAS,
     amount: ONE_NEAR
   })

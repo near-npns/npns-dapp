@@ -1,13 +1,13 @@
 import App from '@/layout/App'
 import { Buffer } from 'buffer'
-import { StrictMode } from 'react'
 import { render } from 'react-dom'
 import 'tailwindcss/tailwind.css'
+import Wrapper from './layout/wrapper'
 window.Buffer = Buffer
 
 render(
-  <StrictMode>
+  <Wrapper>
     <App />
-  </StrictMode>,
+  </Wrapper>,
   document.getElementById('root')
 )
