@@ -17,7 +17,21 @@ export function HeaderPage() {
         <a className="mr-5 hover:text-gray-900">d</a>
       </nav>
       {wallet.isSignedIn() ? (
-        wallet.getAccountId()
+        <div className="flex">
+          <div>
+            <Button variant="outline"> {wallet.getAccountId()}</Button>
+          </div>
+          <div>
+            <Button
+              variant="outline"
+              onClick={() => {
+                wallet.signOut()
+              }}
+            >
+              退出
+            </Button>
+          </div>
+        </div>
       ) : (
         <Button
           variant="outline"

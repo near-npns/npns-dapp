@@ -22,6 +22,7 @@
   "dependencies": {
     "@mantine/core": "^3.6.0",
     "@mantine/hooks": "^3.6.0",
+    "@types/bn.js": "^5.1.0",
     "bn.js": "^5.2.0",
     "buffer": "^6.0.3",
     "near-api-js": "^0.44.2",

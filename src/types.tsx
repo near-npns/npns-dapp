@@ -25,4 +25,5 @@ export interface NPNSChannelInputProps {
   name: string
   icon: string
   description: string
+  amount: string
 }

@@ -9,6 +9,7 @@ specifiers:
   '@mantine/hooks': ^3.6.0
   '@testing-library/jest-dom': ^5.16.1
   '@testing-library/react': ^12.1.2
+  '@types/bn.js': ^5.1.0
   '@types/jest': ^27.4.0
   '@types/node': ^17.0.8
   '@types/react': ^17.0.38
@@ -43,6 +44,7 @@ specifiers:
 dependencies:
   '@mantine/core': registry.npmmirror.com/@mantine/core/3.6.0_7c2cdbe60ca8a6fb18c7cd8153f9593d
   '@mantine/hooks': registry.npmmirror.com/@mantine/hooks/3.6.0_react@17.0.2
+  '@types/bn.js': registry.npmmirror.com/@types/bn.js/5.1.0
   bn.js: registry.nlark.com/bn.js/5.2.0
   buffer: registry.npmmirror.com/buffer/6.0.3
   near-api-js: registry.npmmirror.com/near-api-js/0.44.2
@@ -4408,6 +4410,14 @@ packages:
       '@babel/types': registry.npmmirror.com/@babel/types/7.16.8
     dev: true
 
+  registry.npmmirror.com/@types/bn.js/5.1.0:
+    resolution: {integrity: sha1-MsXScVA6EmU8Ys9NK0Xm6rjOvGg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/bn.js/download/@types/bn.js-5.1.0.tgz}
+    name: '@types/bn.js'
+    version: 5.1.0
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node/17.0.8
+    dev: false
+
   registry.npmmirror.com/@types/graceful-fs/4.1.5:
     resolution: {integrity: sha1-If+6DZjaQ1DbZIkfkqnl2zzbThU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/graceful-fs/download/@types/graceful-fs-4.1.5.tgz}
     name: '@types/graceful-fs'
@@ -4457,7 +4467,6 @@ packages:
     resolution: {integrity: sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/download/@types/node-17.0.8.tgz}
     name: '@types/node'
     version: 17.0.8
-    dev: true
 
   registry.npmmirror.com/@types/parse-json/4.0.0:
     resolution: {integrity: sha1-L4u0QUNNFjs1+4/9zNcTiSf/uMA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/parse-json/download/@types/parse-json-4.0.0.tgz}

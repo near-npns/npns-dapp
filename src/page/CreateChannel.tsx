@@ -1,11 +1,13 @@
 import { HeaderPage } from '@/layout/header'
 import { NavPage } from '@/layout/navbar'
 import { npnsAddChannel } from '@/near/Function'
+import { toYoctoNear } from '@/near/helper'
 import { NPNSChannelInputProps } from '@/types'
 import {
   AppShell,
   Button,
   InputWrapper,
+  NumberInput,
   SimpleGrid,
   Textarea,
   TextInput
@@ -17,6 +19,7 @@ export default function CreateChannelPage() {
   const [name, setName] = useState('')
   const [icon, setIcon] = useState('')
   const [desc, setDesc] = useState('')
+  const [amount, setAmount] = useState(0.01)
 
   const add_channel = useMutation((props: NPNSChannelInputProps) =>
     npnsAddChannel(props)
@@ -65,13 +68,27 @@ export default function CreateChannelPage() {
           </InputWrapper>
         </div>
         <div>
+          <InputWrapper label="amount" description="最小金额">
+            <NumberInput
+              value={amount}
+              precision={2}
+              onChange={(val) => {
+                if (val) {
+                  setAmount(val)
+                }
+              }}
+            />
+          </InputWrapper>
+        </div>
+        <div>
           <Button
             variant="outline"
             onClick={() => {
               const props: NPNSChannelInputProps = {
                 name,
                 icon,
-                description: desc
+                description: desc,
+                amount: toYoctoNear(amount)
               }
               console.log(props)
               add_channel.mutate(props)
