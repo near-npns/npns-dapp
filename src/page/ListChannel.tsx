@@ -3,6 +3,8 @@ import { NavPage } from '@/layout/navbar'
 import { wallet } from '@/near/Account'
 import {
   npnsGetChannels,
+  npnsIsRegistered,
+  npnsRegister,
   npnsSubscribe,
   npnsSubscribes,
   npnsUnSubscribe
@@ -69,10 +71,11 @@ function ChannelList() {
     })
     .map((channel, index) => {
       let isSubscribed = false
-      if (subscribes) {
+
+      if (subscribes && channel.id in subscribes) {
         isSubscribed = subscribes[channel.id]
-        console.log(isSubscribed)
       }
+
       return (
         <List.Item key={index}>
           <Card shadow="sm" padding="lg">
@@ -103,6 +106,16 @@ function ChannelList() {
   return <List>{channels_view}</List>
 }
 export default function ListChannelPage() {
+  const fetchUser = useQuery(['user'], async () => {
+    const nearAccount = wallet.getAccountId() as string
+    console.log(nearAccount)
+    const isRegistered = await npnsIsRegistered(nearAccount)
+    console.log(isRegistered)
+    if (!isRegistered) {
+      await npnsRegister()
+    }
+    return nearAccount
+  })
   return (
     <AppShell
       padding="md"

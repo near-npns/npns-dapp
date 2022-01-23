@@ -25,7 +25,9 @@ export function HeaderPage() {
             <Button
               variant="outline"
               onClick={() => {
+                console.log('signout')
                 wallet.signOut()
+                console.log('signout success')
               }}
             >
               退出
@@ -36,7 +38,10 @@ export function HeaderPage() {
         <Button
           variant="outline"
           onClick={() => {
-            wallet.requestSignIn(NPNS_CONTRACT_ID)
+            wallet.requestSignIn({
+              contractId: NPNS_CONTRACT_ID,
+              methodNames: ['register']
+            })
           }}
         >
           连接钱包

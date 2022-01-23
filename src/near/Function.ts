@@ -83,3 +83,19 @@ export const npnsUnSubscribe = (
     amount: ONE_YOCTO_NEAR
   })
 }
+
+export const npnsIsRegistered = (member: string): Promise<boolean> => {
+  return ViewFunction({
+    methodName: 'is_registered',
+    args: { member: member }
+  })
+}
+
+export const npnsRegister = (): Promise<FinalExecutionOutcome> => {
+  return FunctionCall({
+    methodName: 'register',
+    args: {},
+    gas: MIN_GAS,
+    amount: ONE_YOCTO_NEAR
+  })
+}
