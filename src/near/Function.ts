@@ -99,3 +99,16 @@ export const npnsRegister = (): Promise<FinalExecutionOutcome> => {
     amount: ONE_YOCTO_NEAR
   })
 }
+
+export const npnsPublish = (
+  channel_id: number,
+  title: string,
+  content: string
+): Promise<FinalExecutionOutcome> => {
+  return FunctionCall({
+    methodName: 'publish',
+    args: { channel_id: channel_id, title: title, content: content },
+    gas: MIN_GAS,
+    amount: '0.1'
+  })
+}
