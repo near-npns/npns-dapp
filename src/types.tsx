@@ -27,3 +27,9 @@ export interface NPNSChannelInputProps {
   description: string
   amount: string
 }
+
+export interface NPNSMessageInputProps {
+  channel_id: number
+  title: string
+  content: string
+}

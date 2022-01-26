@@ -1,4 +1,9 @@
-import { NPNSChannelInputProps, NPNSChannelProps, NPNSMetadata } from '@/types'
+import {
+  NPNSChannelInputProps,
+  NPNSChannelProps,
+  NPNSMessageInputProps,
+  NPNSMetadata
+} from '@/types'
 import { FinalExecutionOutcome } from 'near-api-js/lib/providers'
 import { MIN_GAS, NPNS_CONTRACT_ID, wallet } from './Account'
 import { getAmount, getGas } from './helper'
@@ -101,13 +106,18 @@ export const npnsRegister = (): Promise<FinalExecutionOutcome> => {
 }
 
 export const npnsPublish = (
-  channel_id: number,
-  title: string,
-  content: string
+  props: NPNSMessageInputProps
 ): Promise<FinalExecutionOutcome> => {
   return FunctionCall({
     methodName: 'publish',
-    args: { channel_id: channel_id, title: title, content: content },
+    args: {
+      channel_id: props.channel_id,
+      message: {
+        title: props.title,
+        content: props.content,
+        kind: { type: 'Text' }
+      }
+    },
     gas: MIN_GAS,
     amount: '0.1'
   })
