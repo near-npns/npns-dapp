@@ -1,6 +1,6 @@
 import { HeaderPage } from '@/layout/header'
 import { NavPage } from '@/layout/navbar'
-import { AppShell, Card, Group, List, Skeleton, Text } from '@mantine/core'
+import { AppShell, Skeleton, Text, Timeline } from '@mantine/core'
 import { gql, request } from 'graphql-request'
 import { useQuery } from 'react-query'
 
@@ -34,15 +34,9 @@ export default function FeedPage() {
   const feeds_view = data.messages.map(
     (feed: Record<string, string>, index: number) => {
       return (
-        <List.Item key={index}>
-          <Card shadow="sm" padding="lg">
-            <Group position="apart">
-              <Text weight={500}>{feed.title}</Text>
-            </Group>
-
-            <Text>{feed.content}</Text>
-          </Card>
-        </List.Item>
+        <Timeline.Item title={feed.title} key={index}>
+          <Text>{feed.content}</Text>
+        </Timeline.Item>
       )
     }
   )
@@ -61,7 +55,9 @@ export default function FeedPage() {
         }
       })}
     >
-      <List>{feeds_view}</List>
+      <Timeline active={1} bulletSize={24} lineWidth={1}>
+        {feeds_view}
+      </Timeline>
     </AppShell>
   )
 }

@@ -8,7 +8,9 @@ export function HeaderPage() {
       padding="xs"
     >
       <a className="flex items-center mb-4 font-medium text-gray-900 md:mb-0">
-        <span className="ml-3 text-xl">pnps</span>
+        <span className="ml-3 text-xl">
+          Near Push Notification Service (NPNS)
+        </span>
       </a>
       <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
         <a className="mr-5 hover:text-gray-900">a</a>

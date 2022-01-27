@@ -10,19 +10,10 @@ export function NavPage() {
           className="w-full"
           variant="outline"
           onClick={() => {
-            navigate('/createchannel')
+            navigate('/feed')
           }}
         >
-          创建频道
-        </Button>
-        <Button
-          className="w-full"
-          variant="outline"
-          onClick={() => {
-            navigate('/createmessage')
-          }}
-        >
-          创建消息
+          信息流
         </Button>
         <Button
           className="w-full"
@@ -37,10 +28,19 @@ export function NavPage() {
           className="w-full"
           variant="outline"
           onClick={() => {
-            navigate('/feed')
+            navigate('/createchannel')
           }}
         >
-          信息流
+          创建频道
+        </Button>
+        <Button
+          className="w-full"
+          variant="outline"
+          onClick={() => {
+            navigate('/createmessage')
+          }}
+        >
+          创建消息
         </Button>
       </Navbar.Section>
     </Navbar>
