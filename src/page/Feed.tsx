@@ -1,6 +1,13 @@
 import { HeaderPage } from '@/layout/header'
 import { NavPage } from '@/layout/navbar'
-import { AppShell, Skeleton, Text, Timeline } from '@mantine/core'
+import {
+  AppShell,
+  Divider,
+  Skeleton,
+  Space,
+  Text,
+  Timeline
+} from '@mantine/core'
 import { gql, request } from 'graphql-request'
 import { useQuery } from 'react-query'
 
@@ -34,8 +41,11 @@ export default function FeedPage() {
   const feeds_view = data.messages.map(
     (feed: Record<string, string>, index: number) => {
       return (
-        <Timeline.Item title={feed.title} key={index}>
+        <Timeline.Item className="w-3/4" title={feed.title} key={index}>
+          <Space w="md" />
           <Text>{feed.content}</Text>
+          <Space />
+          <Divider />
         </Timeline.Item>
       )
     }
