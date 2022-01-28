@@ -43,7 +43,7 @@ export default function FeedPage() {
     (feed: Record<string, string>, index: number) => {
       return (
         <Timeline.Item
-          className="w-3/4 md:w-full"
+          className="w-full md:w-3/4"
           title={feed.title}
           key={index}
         >

@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom'
 export function NavPage() {
   const navigate = useNavigate()
   return (
-    <Navbar className="md:w-4" height={600} padding="xs" width={{ base: 120 }}>
+    <Navbar
+      className="invisible w-0 sm:visible sm:w-32"
+      height={600}
+      padding="xs"
+    >
       {wallet.isSignedIn() ? (
         <Navbar.Section>
           <Button
-            className="w-full"
+            className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
               navigate('/feed')
@@ -18,7 +22,7 @@ export function NavPage() {
             信息流
           </Button>
           <Button
-            className="w-full"
+            className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
               navigate('/listchannel')
@@ -27,7 +31,7 @@ export function NavPage() {
             频道列表
           </Button>
           <Button
-            className="w-full"
+            className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
               navigate('/createchannel')
@@ -36,7 +40,7 @@ export function NavPage() {
             创建频道
           </Button>
           <Button
-            className="w-full"
+            className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
               navigate('/createmessage')
@@ -48,7 +52,7 @@ export function NavPage() {
       ) : (
         <Navbar.Section>
           <Button
-            className="w-full"
+            className="w-2 sm:w-full"
             variant="outline"
             onClick={() => {
               navigate('/feed')

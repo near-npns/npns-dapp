@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-vite-tailwindcss-boilerplate",
+  "name": "npns-dapp",
   "description": "This is a React + vite boilerplate to be used with Tailwindcss.",
   "version": "0.3.0",
   "private": true,
