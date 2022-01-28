@@ -42,7 +42,11 @@ export default function FeedPage() {
   const feeds_view = data.messages.map(
     (feed: Record<string, string>, index: number) => {
       return (
-        <Timeline.Item className="w-3/4" title={feed.title} key={index}>
+        <Timeline.Item
+          className="w-3/4 md:w-full"
+          title={feed.title}
+          key={index}
+        >
           <Space w="md" />
           <Text>
             <div

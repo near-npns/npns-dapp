@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export function NavPage() {
   const navigate = useNavigate()
   return (
-    <Navbar height={600} padding="xs" width={{ base: 120 }}>
+    <Navbar className="md:w-4" height={600} padding="xs" width={{ base: 120 }}>
       {wallet.isSignedIn() ? (
         <Navbar.Section>
           <Button
