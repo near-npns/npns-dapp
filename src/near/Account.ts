@@ -19,7 +19,7 @@ export const near = new Near(config)
 
 export const wallet = new WalletConnection(near, null)
 
-export const NPNS_CONTRACT_ID = 'npns-test-1.kula.testnet'
+export const NPNS_CONTRACT_ID = 'npns-test-2.kula.testnet'
 
 export interface AccountStorageView {
   total: string

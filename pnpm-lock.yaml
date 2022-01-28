@@ -10,6 +10,7 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.1
   '@testing-library/react': ^12.1.2
   '@types/bn.js': ^5.1.0
+  '@types/dompurify': ^2.3.3
   '@types/jest': ^27.4.0
   '@types/node': ^17.0.8
   '@types/react': ^17.0.38
@@ -21,6 +22,7 @@ specifiers:
   babel-jest: ^27.4.6
   bn.js: ^5.2.0
   buffer: ^6.0.3
+  dompurify: ^2.3.5
   eslint: ^8.6.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^4.0.0
@@ -47,8 +49,10 @@ dependencies:
   '@mantine/core': registry.npmmirror.com/@mantine/core/3.6.0_7c2cdbe60ca8a6fb18c7cd8153f9593d
   '@mantine/hooks': registry.npmmirror.com/@mantine/hooks/3.6.0_react@17.0.2
   '@types/bn.js': registry.npmmirror.com/@types/bn.js/5.1.0
+  '@types/dompurify': registry.npmmirror.com/@types/dompurify/2.3.3
   bn.js: registry.nlark.com/bn.js/5.2.0
   buffer: registry.npmmirror.com/buffer/6.0.3
+  dompurify: registry.npmmirror.com/dompurify/2.3.5
   graphql: registry.npmmirror.com/graphql/16.2.0
   graphql-request: registry.npmmirror.com/graphql-request/3.7.0_graphql@16.2.0
   near-api-js: registry.npmmirror.com/near-api-js/0.44.2
@@ -4393,6 +4397,14 @@ packages:
       '@types/node': registry.npmmirror.com/@types/node/17.0.8
     dev: false
 
+  registry.npmmirror.com/@types/dompurify/2.3.3:
+    resolution: {integrity: sha512-nnVQSgRVuZ/843oAfhA25eRSNzUFcBPk/LOiw5gm8mD9/X7CNcbRkQu/OsjCewO8+VIYfPxUnXvPEVGenw14+w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/dompurify/download/@types/dompurify-2.3.3.tgz}
+    name: '@types/dompurify'
+    version: 2.3.3
+    dependencies:
+      '@types/trusted-types': registry.npmmirror.com/@types/trusted-types/2.0.2
+    dev: false
+
   registry.npmmirror.com/@types/graceful-fs/4.1.5:
     resolution: {integrity: sha1-If+6DZjaQ1DbZIkfkqnl2zzbThU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/graceful-fs/download/@types/graceful-fs-4.1.5.tgz}
     name: '@types/graceful-fs'
@@ -4498,6 +4510,12 @@ packages:
     dependencies:
       '@types/jest': registry.npmmirror.com/@types/jest/27.4.0
     dev: true
+
+  registry.npmmirror.com/@types/trusted-types/2.0.2:
+    resolution: {integrity: sha1-/CWtmUO8rBHM64Fo208nXg5y51Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/trusted-types/download/@types/trusted-types-2.0.2.tgz}
+    name: '@types/trusted-types'
+    version: 2.0.2
+    dev: false
 
   registry.npmmirror.com/@types/yargs-parser/20.2.1:
     resolution: {integrity: sha1-O5ziSJkZ2eT+pDm3aRarw0st8Sk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/yargs-parser/download/@types/yargs-parser-20.2.1.tgz}
@@ -5164,6 +5182,12 @@ packages:
     dependencies:
       webidl-conversions: registry.npmmirror.com/webidl-conversions/5.0.0
     dev: true
+
+  registry.npmmirror.com/dompurify/2.3.5:
+    resolution: {integrity: sha512-kD+f8qEaa42+mjdOpKeztu9Mfx5bv9gVLO6K9jRx4uGvh6Wv06Srn4jr1wPNY2OOUGGSKHNFN+A8MA3v0E0QAQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dompurify/download/dompurify-2.3.5.tgz}
+    name: dompurify
+    version: 2.3.5
+    dev: false
 
   registry.npmmirror.com/electron-to-chromium/1.4.46:
     resolution: {integrity: sha512-UtV0xUA/dibCKKP2JMxOpDtXR74zABevuUEH4K0tvduFSIoxRVcYmQsbB51kXsFTX8MmOyWMt8tuZAlmDOqkrQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.4.46.tgz}

@@ -8,6 +8,7 @@ import {
   Text,
   Timeline
 } from '@mantine/core'
+import purify from 'dompurify'
 import { gql, request } from 'graphql-request'
 import { useQuery } from 'react-query'
 
@@ -43,7 +44,13 @@ export default function FeedPage() {
       return (
         <Timeline.Item className="w-3/4" title={feed.title} key={index}>
           <Space w="md" />
-          <Text>{feed.content}</Text>
+          <Text>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: purify.sanitize(feed.content)
+              }}
+            />
+          </Text>
           <Space />
           <Divider />
         </Timeline.Item>
