@@ -3,6 +3,7 @@ import { NavPage } from '@/layout/navbar'
 import {
   AppShell,
   Divider,
+  Image,
   Skeleton,
   Space,
   Text,
@@ -91,8 +92,8 @@ export default function FeedPage() {
       <div className="flex flex-col divide-y divide-gray-500">
         <div className="flex flex-row bg-gray-100">
           <div className="flex flex-col bg-gray-100 w-2/3">
-            <div className="w-full">
-              <img src={imgUrl1} />
+            <div style={{ width: 480, height: 360, margin: 'auto' }}>
+              <Image radius="md" src={imgUrl1} alt="Random unsplash image" />
             </div>
             <div className="m-4">新闻标题</div>
           </div>
