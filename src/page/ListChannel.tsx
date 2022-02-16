@@ -21,6 +21,7 @@ import {
   Text,
   useMantineTheme
 } from '@mantine/core'
+import purify from 'dompurify'
 import { useMutation, useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
 
@@ -33,7 +34,7 @@ function ChannelList() {
     error,
     data: channels
   } = useQuery(['channels', fromIndex], () => {
-    return npnsGetChannels(fromIndex, 10)
+    return npnsGetChannels(fromIndex, 50)
   })
 
   const { data: subscribes } = useQuery(['subscribes', channels], () => {
@@ -97,7 +98,13 @@ function ChannelList() {
               />
             </Group>
 
-            <Text>{channel.channel.description}</Text>
+            <Text>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: purify.sanitize(channel.channel.description)
+                }}
+              />
+            </Text>
           </Card>
         </List.Item>
       )
