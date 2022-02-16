@@ -60,6 +60,15 @@ export function NavPage() {
           >
             信息流
           </Button>
+          <Button
+            className="w-16 sm:w-full"
+            variant="outline"
+            onClick={() => {
+              navigate('/listchannel')
+            }}
+          >
+            频道列表
+          </Button>
         </Navbar.Section>
       )}
     </Navbar>
