@@ -16,6 +16,15 @@ export function NavPage() {
             className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
+              navigate('/')
+            }}
+          >
+            首页
+          </Button>
+          <Button
+            className="w-16 sm:w-full"
+            variant="outline"
+            onClick={() => {
               navigate('/feed')
             }}
           >
@@ -64,10 +73,10 @@ export function NavPage() {
             className="w-16 sm:w-full"
             variant="outline"
             onClick={() => {
-              navigate('/listchannel')
+              navigate('/')
             }}
           >
-            频道列表
+            首页
           </Button>
         </Navbar.Section>
       )}
