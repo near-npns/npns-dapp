@@ -24,7 +24,6 @@ import {
 import purify from 'dompurify'
 import { useMutation, useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
-
 function ChannelList() {
   const [fromIndex, setFromIndex] = useRecoilState(FromIndex)
   const theme = useMantineTheme()
