@@ -3,6 +3,7 @@ import CreateMessagePage from '@/page/CreateMessage'
 import FeedPage from '@/page/Feed'
 import Index from '@/page/Index'
 import ListChannelPage from '@/page/ListChannel'
+import SearchPage from '@/page/Search'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/listchannel" element={<ListChannelPage />} />
       <Route path="/createmessage" element={<CreateMessagePage />} />
       <Route path="/feed" element={<FeedPage />} />
+      <Route path="/search" element={<SearchPage />} />
     </Routes>
   )
 }
